@@ -1,4 +1,4 @@
-<?php
+<?php 
 class Nasabah extends CI_Controller
 {
     public function __construct()
