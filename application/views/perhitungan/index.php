@@ -186,6 +186,7 @@
                         <td><?= $per['c3']; ?></td>
                         <td><?= $per['c4']; ?></td>
                         <td><?= $per['c5']; ?></td>
+                        <td>tes</td>
                     </tr>
                 </tbody>
             </table>
