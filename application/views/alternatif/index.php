@@ -42,8 +42,8 @@
                     <td><?= $alt['c3']; ?></td>
                     <td><?= $alt['c4']; ?></td>
                     <td><?= $alt['c5']; ?></td>
-                    <td><a onclick="return confirm('yakin ?');" class="badge badge-danger" href="<?= base_url(); ?>nasabah/hapus/<?= $alt['id']; ?>">hapus</a>
-                        <a class="badge badge-success" href="<?= base_url(); ?>nasabah/updatedata/<?= $alt['id']; ?>">update</a></td>
+                    <td><a onclick="return confirm('yakin ?');" class="badge badge-danger" href="<?= base_url(); ?>alternatif/hapus/<?= $alt['id']; ?>">hapus</a>
+                        <a class="badge badge-success" href="<?= base_url(); ?>alternatif/updatedata/<?= $alt['id']; ?>">update</a></td>
 
                 </tr>
             <?php endforeach; ?>

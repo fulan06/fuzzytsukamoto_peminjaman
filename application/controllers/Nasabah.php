@@ -27,7 +27,7 @@ class Nasabah extends CI_Controller
     {
         $data['title'] = 'Tambah Data Nasabah';
         $this->form_validation->set_rules('nip', 'NIP', 'required|numeric');
-        $this->form_validation->set_rules('nama', 'Nama', 'required|alpha');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('nohp', 'No. HP', 'required|numeric');
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
         if (

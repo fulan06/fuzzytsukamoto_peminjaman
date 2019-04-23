@@ -26,6 +26,15 @@
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url() ?>alternatif">Alternatif</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= base_url() ?>rules">Rules</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= base_url() ?>kriteria">Kriteria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?= base_url() ?>perhitungan">Perhitungan</a>
+          </li>
         </ul>
 
         <ul class="nav navbar-nav ml-auto">
