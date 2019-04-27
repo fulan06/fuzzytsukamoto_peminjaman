@@ -162,34 +162,47 @@
             </table>
         </div>
     </div>
-    <div class="card text-white bg-secondary mb-3">
+    <div class="card text-white bg-secondary mb-3" style="height : 2000px">
         <div class="card-header">Nilai Masing Masing Rule</div>
-        <div class="card-body">
-            <table class="table table-secondary table-hover ">
+
+        <div class="card-body -0">
+
+            <table style="height: 1880px; overflow-y: scroll" class=" -0 table table-sm table-secondary table-responsive table-hover">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>C1</th>
-                        <th>C2</th>
-                        <th>C3</th>
-                        <th>C4</th>
-                        <th>C5</th>
+                        <th>Penghasilan</th>
+                        <th>Lama menjadi Anggota</th>
+                        <th>Sisa Pinjaman</th>
+                        <th>Jumlah Pinjaman</th>
+                        <th>Banyak Angsuran</th>
                         <th>Hasil</th>
-
+                        <?php foreach ($alternatif as $al) : ?>
+                        <th><?= $al['id'] ?>(a)</th>
+                        <th><?= $al['id'] ?>(z)</th>
+                        <?php endforeach; ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><?= $per['id']; ?></td>
-                        <td><?= $per['c1']; ?></td>
-                        <td><?= $per['c2']; ?></td>
-                        <td><?= $per['c3']; ?></td>
-                        <td><?= $per['c4']; ?></td>
-                        <td><?= $per['c5']; ?></td>
-                        <td>tes</td>
-                    </tr>
+                    <?php foreach ($rules as $rul) : ?>
+                        <tr>
+                            <td><?= $rul['id']; ?></td>
+                            <td><?= $rul['penghasilan']; ?></td>
+                            <td><?= $rul['lama_menjadi_anggota']; ?></td>
+                            <td><?= $rul['sisa_pinjaman']; ?></td>
+                            <td><?= $rul['jumlah_pinjaman']; ?></td>
+                            <td><?= $rul['banyak_angsuran']; ?></td>
+                            <td><?= $rul['z'] ?></td>
+                            <td><?= min($penghasilan[1],$lamaanggota[2],$jumlahpinjaman[1],$banyakangsuran[1]); ?></td>
+                            <td></td>
+                            
+                        </tr>
+                    <?php endforeach; ?>
+                    
                 </tbody>
             </table>
+
         </div>
+
     </div>
 </div>

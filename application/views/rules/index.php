@@ -34,11 +34,11 @@
                 <tr>
 
                     <td><?= $rul['id']; ?></td>
-                    <td>a</td>
-                    <td>b</td>
-                    <td>c</td>
-                    <td>d</td>
-                    <td>e</td>
+                    <td><?= $rul['penghasilan']; ?></td>
+                    <td><?= $rul['lama_menjadi_anggota']; ?></td>
+                    <td><?= $rul['sisa_pinjaman']; ?></td>
+                    <td><?= $rul['jumlah_pinjaman']; ?></td>
+                    <td><?= $rul['banyak_angsuran']; ?></td>
                     <td><?= $rul['z']; ?></td>
                     <td>
                         <a class="badge badge-success" href="<?= base_url(); ?>nasabah/updatedata/<?= $rul['id']; ?>">update</a></td>

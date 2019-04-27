@@ -1,6 +1,9 @@
 <?php
 class Perhitungan_model extends CI_Model
 {
+    public function getAllRules(){
+        return $this->db->get('rules')->result_array();
+    }
     public function getAllAlternatif()
     {
         return $this->db->get('alternatif')->result_array();
@@ -20,6 +23,7 @@ class Perhitungan_model extends CI_Model
     {
         return $this->db->get('kriteria')->result_array();
     }
+    
    
    
 }
