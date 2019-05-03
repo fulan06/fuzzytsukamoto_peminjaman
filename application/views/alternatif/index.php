@@ -23,11 +23,11 @@
             <tr>
                 <th>Id</th>
                 <th>nama</th>
-                <th>C1</th>
-                <th>C2</th>
-                <th>C3</th>
-                <th>C4</th>
-                <th>C5</th>
+                <th>Penghasilan</th>
+                <th>Lama Menjadi Anggota</th>
+                <th>Sisa Pinjaman</th>
+                <th>Jumlah Pinjaman</th>
+                <th>Banyak Angsuran</th>
                 <th>Aksi</th>
             </tr>
         </thead>

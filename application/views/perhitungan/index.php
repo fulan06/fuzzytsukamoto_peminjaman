@@ -14,11 +14,11 @@
                     <tr>
                         <th>Id</th>
                         <th>Nama</th>
-                        <th>C1</th>
-                        <th>C2</th>
-                        <th>C3</th>
-                        <th>C4</th>
-                        <th>C5</th>
+                        <th>Penghasilan</th>
+                        <th>Lama Menjadi Anggota</th>
+                        <th>Sisa Pinjaman</th>
+                        <th>Jumlah Pinjaman</th>
+                        <th>Banyak Angsuran</th>
 
                     </tr>
                 </thead>
@@ -48,11 +48,11 @@
                 <thead>
                     <tr class="text-center">
                         <th rowspan="3"></th>
-                        <th colspan="3">C1</th>
-                        <th colspan="3">C2</th>
-                        <th colspan="3">C3</th>
-                        <th colspan="3">C4</th>
-                        <th colspan="3">C5</th>
+                        <th colspan="3">Penghasilan</th>
+                        <th colspan="3">Lama Menjadi Anggota</th>
+                        <th colspan="3">Sisa Pinjaman</th>
+                        <th colspan="3">Jumlah Pinjaman</th>
+                        <th colspan="3">Banyak Angsuran</th>
                     </tr>
                     <tr class="text-center">
 
