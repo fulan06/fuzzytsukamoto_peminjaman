@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-5 mt-5">
     <div class="row mt-3">
         <div class="col-md-6">
 
@@ -13,6 +13,7 @@
                             <input type="text" name="nip" class="form-control" placeholder="NIP" id="nip" value="<?= $nasabah['nip'];  ?>">
                             <small class="form-text text-danger"><?= form_error('nip') ?></small>
                         </div>
+
                         <div class="form-group">
                             <label for="nama">Nama</label>
                             <input type="text" name="nama" class="form-control" placeholder="Nama Nasabah" id="nama" value="<?= $nasabah['nama'];  ?>">

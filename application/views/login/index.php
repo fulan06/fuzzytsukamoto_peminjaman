@@ -1,4 +1,4 @@
-<div class="container" style="margin-top:30px">
+<div class="container pt-5 mt-5" style="margin-top:30px">
     <?php if ($this->session->flashdata('flash')) : ?>
         <div class="row mt-3">
             <div class="col-md-3">

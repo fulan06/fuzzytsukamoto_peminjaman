@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-5 mt-5 ">
 
     <div class="row">
 
@@ -257,7 +257,7 @@
                             <?php foreach ($lokal as $key => $value1) : ?>
 
                                 <?php
-                                $zitampil = 0 ;
+                                $zitampil = 0;
                                 $a = min($value1);
                                 if ($hasil[$i] == 'tidak layak') {
                                     $zitampil = tidaklayak($a, 60, 40);
@@ -315,37 +315,37 @@
                     $m = 0;
                     ?>
                     <?php foreach ($perhitungan as $per) : ?>
+                        <?php
+                        $axz = 0;
+                        $sum_min = 0;
+                        $n = 0;
+                        ?>
+                        <?php foreach ($nilai_rule_min as $key => $value) : ?>
+                            <?php
+                            $axz = $axz +  $temp_zi[$n][$m] * $nilai_rule_min[$n][$m];
+                            $sum_min += $value[$m];
+                            $n++;
+                            ?>
+                        <?php endforeach; ?>
+                        <?php
+                        $hasilakhir[$m] = $axz / $sum_min;
+                        $sorting_total[$m] = array($per['id'], $per['nama'], $hasilakhir[$m]);
+                        array_multisort($hasilakhir, SORT_DESC, SORT_STRING, $sorting_total);
+                        ?>
+                        <?php
+                        $m++;
+                        ?>
+                    <?php endforeach; ?>
+                    <?php $co = 0; ?>
+                    <?php foreach ($perhitungan as $per) : ?>
                         <tr>
-                            <td><?= $per['id']; ?></td>
-                            <td><?= $per['nama']; ?></td>
-                            <?php
-                            $axz = 0;
-                            $hasilakhir = 0;
-                            $sum_min = 0;
-                            // $l = 0;
-                            // $m = 0;
-                            $n = 0;
-                            // print_r($nilai_rule_min);
-                            // print_r($temp_zi);
-                            ?>
-                            <?php foreach ($nilai_rule_min as $key => $value) : ?>
-                                <?php
-                                $axz = $axz +  $temp_zi[$n][$m] * $nilai_rule_min[$n][$m];
-                                // echo $temp_zi[$n][$m];
-                                // $l++;
-                                // echo($zi[0]);
-                                // echo $axz;
-                                $sum_min += $value[$m];
-                                // $m++;
-                                $n++;
-                                ?>
-                            <?php endforeach; ?>
-                            <?php $hasilakhir = $axz / $sum_min; ?>
-                            <td><?= $hasilakhir ?></td>
-                            <?php
-                            $m++;
-                            ?>
+                            <td><?= $sorting_total[$co][0]; ?></td>
+                            <td><?= $sorting_total[$co][1]; ?></td>
+                            <td><?= $sorting_total[$co][2]; ?></td>
                         </tr>
+                        <?php
+                        $co++;
+                        ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>

@@ -3,8 +3,8 @@
 
 <head>
   <title><?php echo $title; ?></title>
-  <link rel="stylesheet" href="<?=base_url()?>css/bootstrap.css" media="screen">
-  <link rel="stylesheet" href="<?=base_url()?>css/custom.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>css\bootstrap.min.css" media="screen">
+  <!-- <link rel="stylesheet" href="https://bootswatch.com/_assets/css/custom.min.css"> -->
 </head>
 
 <body>
@@ -37,17 +37,17 @@
           </li>
         </ul>
 
-        <ul class="navbar-nav ml-auto <?=$menu_nama?> ">
-		    	<li class="nav-item dropdown ">
-			        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			          <?= $nama ?><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-			        </a>
-			        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			          <a class="dropdown-item" href="<?= base_url(); ?>user">Data User</a>
-			          <a class="dropdown-item" href="<?= base_url(); ?>login/logout">Logout</a>
-			        </div>
-		     	</li>
-   			</ul>
+        <ul class="navbar-nav ml-auto <?= $menu_nama ?> ">
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <?= $nama ?><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="<?= base_url(); ?>user">Data User</a>
+              <a class="dropdown-item" href="<?= base_url(); ?>login/logout">Logout</a>
+            </div>
+          </li>
+        </ul>
 
       </div>
     </div>
