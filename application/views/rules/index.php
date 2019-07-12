@@ -26,7 +26,7 @@
                 <th>Jumlah Pinjaman</th>
                 <th>Banyak Angsuran</th>
                 <th>Pinjaman</th>
-                <th>aksi</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -40,8 +40,7 @@
                     <td><?= $rul['jumlah_pinjaman']; ?></td>
                     <td><?= $rul['banyak_angsuran']; ?></td>
                     <td><?= $rul['z']; ?></td>
-                    <td>
-                        <a class="badge badge-success" href="<?= base_url(); ?>nasabah/updatedata/<?= $rul['id']; ?>">update</a></td>
+                    
 
                 </tr>
             <?php endforeach; ?>

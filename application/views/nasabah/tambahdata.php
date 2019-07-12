@@ -18,6 +18,11 @@
                             <small class="form-text text-danger"><?= form_error('nama') ?></small>
                         </div>
                         <div class="form-group">
+                            <label for="alamat">Alamat</label>
+                            <input type="text" name="alamat" class="form-control" placeholder="Alamat" id="alamat">
+                            <small class="form-text text-danger"><?= form_error('alamat') ?></small>
+                        </div>
+                        <div class="form-group">
                             <label for="nohp">No. Hp</label>
                             <input type="text" name="nohp" class="form-control" placeholder="No. HP" id="nohp">
                             <small class="form-text text-danger"><?= form_error('nohp') ?></small>

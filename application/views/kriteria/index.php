@@ -4,7 +4,7 @@
             <div class="col-md-6">
                 <div class="alert alert-dismissible alert-success">
                     <button type="button" class="close" data-dismiss="alert"></button>
-                    Data Kriteria <strong>berhasil </strong> <?= $this->session->flashdata('flash'); ?>
+                    Data Kriteria <strong>berhasil </strong> <?= $this->session->flashdata  ('flash'); ?>
                 </div>
  
             </div>
@@ -31,7 +31,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($krt as $krit) : ?>
+            <?php foreach ($kriteria as $krit) : ?>
                 <tr>
 
                     <td><?= $krit['id']; ?></td>
@@ -43,7 +43,7 @@
                     <td><?= $krit['namat']; ?></td>
                     <td><?= $krit['namaa']; ?></td>
                     <td>
-                        <a class="badge badge-success" href="<?= base_url(); ?>nasabah/updatedata/<?= $krit['id']; ?>">update</a></td>
+                        <a class="badge badge-success" href="<?= base_url();?>kriteria/updatedata/<?= $krit['id']; ?>">update</a></td>
 
                 </tr>
             <?php endforeach; ?>

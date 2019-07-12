@@ -14,10 +14,32 @@
 
         <div class="col-md-6">
             <h3>Daftar Alternatif</h3>
-            <a href="<?= base_url(); ?>alternatif/tambahdata" class="btn btn-primary mb-4 mt-4">Tambah Data Alternatif</a>
 
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="<?= base_url(); ?>alternatif/tambahdata" class="btn btn-primary mb-4 mt-4">Tambah Data Alternatif</a>
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-4 mt-4">
+            <form action="" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cari data Alternatif" name="keyword">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">Cari</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <?php if (empty($alternatif)) : ?>
+            <div class="alert alert-danger mt-3" role="alert">
+                Data Nasabah tidak ditemukan
+            </div>
+       
+        <?php endif; ?>
     <table class="table table-secondary table-hover ">
         <thead>
             <tr>

@@ -8,17 +8,12 @@
                     <h4 class="card-title">Silahkan Inputkan Data Alternatif</h4>
                     <form action="" method="post">
                         <div class="form-group">
-                            <fieldset>
+                            
                                 <label class="control-label" for="readOnlyInput">id</label>
-                                <input class="form-control" id="nama" type="text" placeholder="Nama Nasabah" readonly="nama" value="<?= $alternatif['id'] ?>">
-                            </fieldset>
+                                <input class="form-control" name= "id" type="text" readonly="nama" value="<?= $alternatif['id'] ?>">
+                            
                         </div>
-                        <div class="form-group">
-                            <fieldset>
-                                <label class="control-label" for="readOnlyInput">Nama Nasabah</label>
-                                <input class="form-control" id="nama" type="text" placeholder="Nama Nasabah" readonly="nama">
-                            </fieldset>
-                        </div>
+                       
                         <div class="form-group">
                             <label for="c1">C1</label>
                             <input type="text" name="c1" class="form-control" placeholder="Input C1" id="c1" value="<?= $alternatif['c1'] ?>">

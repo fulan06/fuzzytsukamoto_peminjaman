@@ -23,6 +23,9 @@ class Perhitungan_model extends CI_Model
     {
         return $this->db->get('kriteria')->result_array();
     }
+    public function getAllRuleAngka(){
+        return $this->db->get('rule_angka')->result_array();
+    }
     
    
    

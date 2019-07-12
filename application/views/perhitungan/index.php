@@ -125,16 +125,32 @@
                         }
                         return array($bawah, $tengah, $atas);
                     }
+                    function layak($alpha, $atas, $bawah)
+                    {
+                        $zi = ($alpha * ($atas - $bawah)) + $bawah;
+                        return $zi;
+                    }
+                    function tidaklayak($alpha, $atas, $bawah)
+                    {
+                        $zi = $atas - ($alpha * ($atas - $bawah));
+                        return $zi;
+                    }
                     $id = 0;
-                    foreach ($perhitungan as $per) {
+                    $fuzzifikasi = [];
+                    ?>
+                    <?php foreach ($perhitungan as $per) : ?>
+                        <?php
                         $id++;
-                        $penghasilan = fuzzyfikasi(500000, 1500000, 2500000, $per['c1']);
-                        $lamaanggota = fuzzyfikasi(1, 5, 15, $per['c2']);
-                        $sisapinjaman = fuzzyfikasi(500000, 15000000, 20000000, $per['c3']);
-                        $jumlahpinjaman = fuzzyfikasi(500000, 18000000, 25000000, $per['c4']);
-                        $banyakangsuran = fuzzyfikasi(1, 20, 40, $per['c5']);
-
+                        $penghasilan = fuzzyfikasi($kriteria_penghasilan['batasb'], $kriteria_penghasilan['batast'], $kriteria_penghasilan['batasa'], $per['c1']);
+                        $lamaanggota = fuzzyfikasi($kriteria_lama['batasb'], $kriteria_lama['batast'], $kriteria_lama['batasa'], $per['c2']);
+                        $sisapinjaman = fuzzyfikasi($kriteria_sisa['batasb'], $kriteria_sisa['batast'], $kriteria_sisa['batasa'], $per['c3']);
+                        $jumlahpinjaman = fuzzyfikasi($kriteria_jumlah['batasb'], $kriteria_jumlah['batast'], $kriteria_jumlah['batasa'], $per['c4']);
+                        $banyakangsuran = fuzzyfikasi($kriteria_angsuran['batasb'], $kriteria_angsuran['batast'], $kriteria_angsuran['batasa'], $per['c5']);
+                        $temp = array_merge($penghasilan, $lamaanggota, $sisapinjaman, $jumlahpinjaman, $banyakangsuran);
+                        $fuzzifikasi[] = $temp;
                         ?>
+
+
                         <tr>
 
                             <td><?= $per['nama'] ?></td>
@@ -156,14 +172,14 @@
                             <td><?= round($banyakangsuran[2], 4); ?></td>
 
                         </tr>
-                    <?php } ?>
+                    <?php endforeach; ?>
 
                 </tbody>
             </table>
         </div>
     </div>
     <div class="card text-white bg-secondary mb-3" style="height : 2000px">
-        <div class="card-header">Nilai Masing Masing Rule</div>
+        <div class="card-header">Nilai Min (Implikasi)</div>
 
         <div class="card-body -0">
 
@@ -177,14 +193,34 @@
                         <th>Jumlah Pinjaman</th>
                         <th>Banyak Angsuran</th>
                         <th>Hasil</th>
+
                         <?php foreach ($alternatif as $al) : ?>
-                        <th><?= $al['id'] ?>(a)</th>
-                        <th><?= $al['id'] ?>(z)</th>
+                            <th><?= $al['id'] ?>(a)</th>
+                            <th><?= $al['id'] ?>(Zi)</th>
+
                         <?php endforeach; ?>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($rules as $rul) : ?>
+                    <?php
+                    function cek($a, $nilai, $bawah, $atas, $naik)
+                    {
+                        if ($nilai == "0")
+                            return ($naik) ? $a[$bawah] : $a[$atas];
+                        else if ($nilai == "1")
+                            return $a[$bawah + 1];
+                        else if ($nilai == "2")
+                            return ($naik) ? $a[$atas] : $a[$bawah];
+                    }
+                    $nilai_rule = [];
+                    $nilai_rule_min = [];
+                    $z = [];
+                    $i = 0;
+
+                    $temp_zi = [];
+
+                    ?>
+                    <?php foreach ($rule_angka as $rul) : ?>
                         <tr>
                             <td><?= $rul['id']; ?></td>
                             <td><?= $rul['penghasilan']; ?></td>
@@ -192,17 +228,127 @@
                             <td><?= $rul['sisa_pinjaman']; ?></td>
                             <td><?= $rul['jumlah_pinjaman']; ?></td>
                             <td><?= $rul['banyak_angsuran']; ?></td>
-                            <td><?= $rul['z'] ?></td>
-                            <td><?= min($penghasilan[1],$lamaanggota[2],$jumlahpinjaman[1],$banyakangsuran[1]); ?></td>
-                            <td></td>
-                            
+                            <td><?= $rul['hasil'];
+                                $hasil[] = $rul['hasil'];
+                                ?></td>
+
+                            <?php
+                            $aa = 0;
+                            $lokal = []; ?>
+                            <?php foreach ($fuzzifikasi as $key => $value) : ?>
+                                <?php
+                                $j = 0;
+                                $nilai = [];
+                                $nilai[] = cek($value, $rul['penghasilan_a'], 0, 2, false);
+                                $nilai[] = cek($value, $rul['lama_menjadi_anggota_a'], 3, 5, false);
+                                $nilai[] = cek($value, $rul['sisa_pinjaman_a'], 6, 8, true);
+                                $nilai[] = cek($value, $rul['jumlah_pinjaman_a'], 9, 11, true);
+                                $nilai[] = cek($value, $rul['banyak_angsuran_a'], 12, 14, true);
+                                $lokal[] = $nilai;
+                                ?>
+                            <?php endforeach; ?>
+                            <?php
+                            $min = [];
+                            $zi = [];
+
+                            $b = "";
+
+                            ?>
+                            <?php foreach ($lokal as $key => $value1) : ?>
+
+                                <?php
+                                $zitampil = 0 ;
+                                $a = min($value1);
+                                if ($hasil[$i] == 'tidak layak') {
+                                    $zitampil = tidaklayak($a, 60, 40);
+                                } else {
+                                    $zitampil = layak($a, 60, 40);
+                                }
+                                $zi[] = $zitampil;
+                                $min[] = $a;
+                                $b = ($a > 0) ? "<b>" . round($a, 4) . "<b>" : $a;
+                                // print_r($value1);
+
+
+                                ?>
+                                <td><?= $b ?></td>
+                                <td><?= round($zitampil) ?></td>
+
+                            <?php endforeach; ?>
+
+                            <?php
+
+                            $temp_zi[] = $zi;
+                            $nilai_rule_min[] = $min;
+                            // print_r($temp_zi[$i][2]);
+                            ?>
                         </tr>
+                        <?php
+                        $nilai_rule[] = $lokal;
+                        $i++;
+
+                        ?>
+
                     <?php endforeach; ?>
-                    
+
+
+
                 </tbody>
             </table>
 
         </div>
 
+    </div>
+    <div class="card text-white bg-secondary mb-3">
+        <div class="card-header">Hasil Akhir</div>
+        <div class="card-body">
+            <table class="table table-secondary table-hover ">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nama</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $m = 0;
+                    ?>
+                    <?php foreach ($perhitungan as $per) : ?>
+                        <tr>
+                            <td><?= $per['id']; ?></td>
+                            <td><?= $per['nama']; ?></td>
+                            <?php
+                            $axz = 0;
+                            $hasilakhir = 0;
+                            $sum_min = 0;
+                            // $l = 0;
+                            // $m = 0;
+                            $n = 0;
+                            // print_r($nilai_rule_min);
+                            // print_r($temp_zi);
+                            ?>
+                            <?php foreach ($nilai_rule_min as $key => $value) : ?>
+                                <?php
+                                $axz = $axz +  $temp_zi[$n][$m] * $nilai_rule_min[$n][$m];
+                                // echo $temp_zi[$n][$m];
+                                // $l++;
+                                // echo($zi[0]);
+                                // echo $axz;
+                                $sum_min += $value[$m];
+                                // $m++;
+                                $n++;
+                                ?>
+                            <?php endforeach; ?>
+                            <?php $hasilakhir = $axz / $sum_min; ?>
+                            <td><?= $hasilakhir ?></td>
+                            <?php
+                            $m++;
+                            ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
